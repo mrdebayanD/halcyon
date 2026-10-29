@@ -1,0 +1,42 @@
+name: Bug report
+description: Something broke, crashed or didn't respond.
+labels: [bug, beta]
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for testing Halcyon. Issues are public, so please don't include anything private."
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. Tapped the bedtime reminder\n2. Tapped I'm going to sleep\n3. ..."
+  - type: input
+    id: device
+    attributes:
+      label: iPhone model and iOS version
+      placeholder: iPhone 14 Pro Max, iOS 26.1
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Halcyon version
+      description: Settings › About
+      placeholder: 2.0
+  - type: dropdown
+    id: install
+    attributes:
+      label: Installed with
+      options: [AltStore, SideStore, Xcode, Other]
+  - type: textarea
+    id: shots
+    attributes:
+      label: Screenshots
+      description: Drag images here if they help.

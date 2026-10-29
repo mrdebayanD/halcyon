@@ -1,0 +1,38 @@
+name: Sleep accuracy
+description: The report didn't match how your night actually went.
+labels: [accuracy, beta]
+body:
+  - type: input
+    id: date
+    attributes:
+      label: Which night?
+      placeholder: Night of Oct 28
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What really happened
+      description: Roughly when you went to bed, fell asleep, woke in the night and got up.
+      placeholder: "Lights out 11:15, probably asleep by 11:40, up once around 3 for ~5 min, up for good at 6:50"
+    validations:
+      required: true
+  - type: textarea
+    id: report
+    attributes:
+      label: What Halcyon showed
+      description: A screenshot of the night report is ideal.
+  - type: dropdown
+    id: phone
+    attributes:
+      label: Where was the phone?
+      options: [Nightstand, On the bed, Under the pillow, Charging on a dock, Other]
+  - type: checkboxes
+    id: extras
+    attributes:
+      label: Anything else that night?
+      options:
+        - label: Wearing an Apple Watch
+        - label: Someone else in the bed or room
+        - label: Pet in the room
+        - label: Fan, white noise or other steady sound

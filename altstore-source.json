@@ -1,0 +1,48 @@
+{
+  "name": "Halcyon",
+  "identifier": "io.github.mrdebayand.halcyon",
+  "subtitle": "A free, private sleep tracker for iPhone.",
+  "description": "Halcyon notices when you fall asleep, scores your night and catches snoring. Everything stays on your iPhone.",
+  "iconURL": "https://raw.githubusercontent.com/mrdebayanD/halcyon/main/docs/icon.png",
+  "headerURL": "https://raw.githubusercontent.com/mrdebayanD/halcyon/main/docs/screens.png",
+  "website": "https://github.com/mrdebayanD/halcyon",
+  "tintColor": "#4F4DCB",
+  "apps": [
+    {
+      "name": "Halcyon",
+      "bundleIdentifier": "com.debayandatta.nidra",
+      "developerName": "Debayan Datta",
+      "subtitle": "Sleep tracking that stays on your phone.",
+      "localizedDescription": "Tap the bedtime reminder, put your phone down, and Halcyon does the rest: minute-by-minute sleep stages, a sleep score out of 100, snoring and sleep-talk clips, a smart alarm and gentle late-night nudges. No account, no server, no analytics.",
+      "iconURL": "https://raw.githubusercontent.com/mrdebayanD/halcyon/main/docs/icon.png",
+      "tintColor": "#4F4DCB",
+      "category": "lifestyle",
+      "screenshots": [
+        "https://raw.githubusercontent.com/mrdebayanD/halcyon/main/docs/screens.png"
+      ],
+      "versions": [
+        {
+          "version": "2.0",
+          "buildVersion": "2",
+          "date": "2026-10-28",
+          "localizedDescription": "First beta. Please send feedback from Settings \u203a Send feedback.",
+          "downloadURL": "https://github.com/mrdebayanD/halcyon/releases/download/v2.0-beta.1/Halcyon.ipa",
+          "size": 1364874,
+          "minOSVersion": "18.0"
+        }
+      ],
+      "appPermissions": {
+        "entitlements": [
+          "com.apple.developer.healthkit"
+        ],
+        "privacy": {
+          "NSMicrophoneUsageDescription": "Listens on this iPhone for snoring, sleep talk and room noise while you sleep. Audio never leaves your phone.",
+          "NSMotionUsageDescription": "Notices when your phone is put down or picked up, to tell when you fell asleep and woke up.",
+          "NSHealthShareUsageDescription": "Reads Apple Watch sleep stages, heart rate and HRV to make your sleep reports more accurate.",
+          "NSHealthUpdateUsageDescription": "Saves each night's sleep stages to Apple Health, if you turn this on."
+        }
+      }
+    }
+  ],
+  "news": []
+}

@@ -1,0 +1,489 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00DB9ADE38497C433D6775DE /* PhoneStageEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD8D60E29381E02CB551CE5 /* PhoneStageEstimator.swift */; };
+		E1F06A2F7DC57EBC53DE61C2 /* SleepAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F383245BFB30C0B549E61CE /* SleepAnalytics.swift */; };
+		F22747AD08265A0CD2BD76CC /* SleepMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C96CB48CA681CE9D486FD30 /* SleepMetrics.swift */; };
+		8C5DE46A8844F31E8851D481 /* SleepScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E439E6D9B3900B2639046C68 /* SleepScore.swift */; };
+		FD6B1830DF90D58B87C6F1C8 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E1E928CE2DB37A179D19F /* Story.swift */; };
+		31AC927133836E89AAD4895E /* SleepApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91250BAFE575DE4D4F2EC5E8 /* SleepApp.swift */; };
+		4AC036698031E6F5124D523A /* DemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA8C6020AA83F531EB12482 /* DemoData.swift */; };
+		C3F144C11575031093CF111D /* AlarmPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2815D46F6B364AF7031F5B3E /* AlarmPlayer.swift */; };
+		6F8D18030151894B939AA90E /* ClipRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74793DD206E1D42F69DE1F1B /* ClipRecorder.swift */; };
+		4563F98B7E6B7410E33BD270 /* NightBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F9227352854EC8C5D5AD4A /* NightBuilder.swift */; };
+		81F102A2C49C62B5EDCB0156 /* NightEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE2ADDBC8FADAC46F5F1D6C /* NightEngine.swift */; };
+		5005FDE37701889C91A4DB1E /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6479FB9D5385797AE5FB59 /* Notifications.swift */; };
+		0D3EFED3596EE37E6F728877 /* SensorHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95A406CE472F9F4A9086682 /* SensorHub.swift */; };
+		47F602BE3E4A2E279C3DF6E2 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67D7FF20498EB04A68D5917 /* HealthKitManager.swift */; };
+		2D0E2C3E1A154753AC5886E2 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D29B812D73AD1F905BDEB /* Models.swift */; };
+		AABCFE10C3E4D141DF81BF6A /* ListeningActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CB3F84ED85CF68CA9DD89D /* ListeningActivity.swift */; };
+		3AD45B8DA5B9EB164490C3D2 /* ListeningActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CB3F84ED85CF68CA9DD89D /* ListeningActivity.swift */; };
+		358F869F0DFA14318F86C366 /* BedtimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D7232F14D1B75D03DEC82E /* BedtimeView.swift */; };
+		6E353BD6A529A2D6C15ADB37 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DD601034BA8771867E10EA /* Components.swift */; };
+		B5CDBF7E069C40477DB4AA95 /* NightReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E35E8C141E6F8D3818901E /* NightReportView.swift */; };
+		ED508D67638E9351A733CBBC /* NightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99D766E3D30B5BBDAAF0249 /* NightsView.swift */; };
+		F0A0E7A4D4E7FF466E2C89CD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E62947A3967E233AC0E83E2 /* SettingsView.swift */; };
+		6960FB02202CD9BA01145AB6 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5E2C334DB0B99C006CB618 /* SummaryView.swift */; };
+		B90F5672BCA7FD73ECBA5D9A /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEF9D16D202F28A1B7E4E08 /* Theme.swift */; };
+		F4FD3FBD75F3226B8EDE6AAF /* TrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C360D95C90CC4D4D29B5DEB0 /* TrendsView.swift */; };
+		E1E4E27809D725DC890044D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA10B874C65ECDC27C95633F /* Assets.xcassets */; };
+		EF0E35BF257E55BC4E9E356D /* ListeningLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C38AF1519C867E3C5196EF /* ListeningLiveActivity.swift */; };
+		8D5306405051D8DF59CA0596 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFEFFAD87D11AF2CEB5CAA94 /* Assets.xcassets */; };
+		880306A3DD05D2FFCDD3A5C1 /* NidraWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 633F169D79F833D27E8F1906 /* NidraWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5A3EF722437A398C1DFC36F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DE01E1311383CF7C3AF7FDB6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FBFF2D9DEB17C5B0C9DBD197;
+			remoteInfo = NidraWidgets;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CC88047B27CE9143C36A7B5D /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				880306A3DD05D2FFCDD3A5C1 /* NidraWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F61E4FBEB4314F55E88D3573 /* Nidra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nidra.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		633F169D79F833D27E8F1906 /* NidraWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NidraWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DD8D60E29381E02CB551CE5 /* PhoneStageEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Analysis/PhoneStageEstimator.swift"; sourceTree = "<group>"; };
+		2F383245BFB30C0B549E61CE /* SleepAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Analysis/SleepAnalytics.swift"; sourceTree = "<group>"; };
+		8C96CB48CA681CE9D486FD30 /* SleepMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Analysis/SleepMetrics.swift"; sourceTree = "<group>"; };
+		E439E6D9B3900B2639046C68 /* SleepScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Analysis/SleepScore.swift"; sourceTree = "<group>"; };
+		ED5E1E928CE2DB37A179D19F /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Analysis/Story.swift"; sourceTree = "<group>"; };
+		91250BAFE575DE4D4F2EC5E8 /* SleepApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App/SleepApp.swift"; sourceTree = "<group>"; };
+		7DA8C6020AA83F531EB12482 /* DemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DemoData.swift"; sourceTree = "<group>"; };
+		2815D46F6B364AF7031F5B3E /* AlarmPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Engine/AlarmPlayer.swift"; sourceTree = "<group>"; };
+		74793DD206E1D42F69DE1F1B /* ClipRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Engine/ClipRecorder.swift"; sourceTree = "<group>"; };
+		04F9227352854EC8C5D5AD4A /* NightBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Engine/NightBuilder.swift"; sourceTree = "<group>"; };
+		0FE2ADDBC8FADAC46F5F1D6C /* NightEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Engine/NightEngine.swift"; sourceTree = "<group>"; };
+		2B6479FB9D5385797AE5FB59 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Engine/Notifications.swift"; sourceTree = "<group>"; };
+		C95A406CE472F9F4A9086682 /* SensorHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Engine/SensorHub.swift"; sourceTree = "<group>"; };
+		C67D7FF20498EB04A68D5917 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Health/HealthKitManager.swift"; sourceTree = "<group>"; };
+		078D29B812D73AD1F905BDEB /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model/Models.swift"; sourceTree = "<group>"; };
+		D1CB3F84ED85CF68CA9DD89D /* ListeningActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shared/ListeningActivity.swift"; sourceTree = "<group>"; };
+		D1D7232F14D1B75D03DEC82E /* BedtimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/BedtimeView.swift"; sourceTree = "<group>"; };
+		24DD601034BA8771867E10EA /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Components.swift"; sourceTree = "<group>"; };
+		A8E35E8C141E6F8D3818901E /* NightReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/NightReportView.swift"; sourceTree = "<group>"; };
+		C99D766E3D30B5BBDAAF0249 /* NightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/NightsView.swift"; sourceTree = "<group>"; };
+		6E62947A3967E233AC0E83E2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/SettingsView.swift"; sourceTree = "<group>"; };
+		3E5E2C334DB0B99C006CB618 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/SummaryView.swift"; sourceTree = "<group>"; };
+		DFEF9D16D202F28A1B7E4E08 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Theme.swift"; sourceTree = "<group>"; };
+		C360D95C90CC4D4D29B5DEB0 /* TrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/TrendsView.swift"; sourceTree = "<group>"; };
+		AA10B874C65ECDC27C95633F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets.xcassets"; sourceTree = "<group>"; };
+		1BAA5D8007DD08F3C28BBADE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info.plist"; sourceTree = "<group>"; };
+		6288D0996AEAEA2C84917394 /* Nidra.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Nidra.entitlements"; sourceTree = "<group>"; };
+		73C38AF1519C867E3C5196EF /* ListeningLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListeningLiveActivity.swift"; sourceTree = "<group>"; };
+		2B46666EFC08A16604F66517 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info.plist"; sourceTree = "<group>"; };
+		CFEFFAD87D11AF2CEB5CAA94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets.xcassets"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D4D9190A88FB697279802338 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7443AEEFFF0A2CE5C617212 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6FE2ACAF1461FE7AD8E43C26 = {
+			isa = PBXGroup;
+			children = (
+				F8E83951EB7F03EA0D71CE8F /* Nidra */,
+				69023C4C98C3E5F88ACAEC56 /* NidraWidgets */,
+				1AB7A5EB5E114DE88C550AEA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F8E83951EB7F03EA0D71CE8F /* Nidra */ = {
+			isa = PBXGroup;
+			children = (
+				8DD8D60E29381E02CB551CE5 /* PhoneStageEstimator.swift */,
+				2F383245BFB30C0B549E61CE /* SleepAnalytics.swift */,
+				8C96CB48CA681CE9D486FD30 /* SleepMetrics.swift */,
+				E439E6D9B3900B2639046C68 /* SleepScore.swift */,
+				ED5E1E928CE2DB37A179D19F /* Story.swift */,
+				91250BAFE575DE4D4F2EC5E8 /* SleepApp.swift */,
+				7DA8C6020AA83F531EB12482 /* DemoData.swift */,
+				2815D46F6B364AF7031F5B3E /* AlarmPlayer.swift */,
+				74793DD206E1D42F69DE1F1B /* ClipRecorder.swift */,
+				04F9227352854EC8C5D5AD4A /* NightBuilder.swift */,
+				0FE2ADDBC8FADAC46F5F1D6C /* NightEngine.swift */,
+				2B6479FB9D5385797AE5FB59 /* Notifications.swift */,
+				C95A406CE472F9F4A9086682 /* SensorHub.swift */,
+				C67D7FF20498EB04A68D5917 /* HealthKitManager.swift */,
+				078D29B812D73AD1F905BDEB /* Models.swift */,
+				D1CB3F84ED85CF68CA9DD89D /* ListeningActivity.swift */,
+				D1D7232F14D1B75D03DEC82E /* BedtimeView.swift */,
+				24DD601034BA8771867E10EA /* Components.swift */,
+				A8E35E8C141E6F8D3818901E /* NightReportView.swift */,
+				C99D766E3D30B5BBDAAF0249 /* NightsView.swift */,
+				6E62947A3967E233AC0E83E2 /* SettingsView.swift */,
+				3E5E2C334DB0B99C006CB618 /* SummaryView.swift */,
+				DFEF9D16D202F28A1B7E4E08 /* Theme.swift */,
+				C360D95C90CC4D4D29B5DEB0 /* TrendsView.swift */,
+				AA10B874C65ECDC27C95633F /* Assets.xcassets */,
+				1BAA5D8007DD08F3C28BBADE /* Info.plist */,
+				6288D0996AEAEA2C84917394 /* Nidra.entitlements */,
+			);
+			path = Nidra;
+			sourceTree = "<group>";
+		};
+		69023C4C98C3E5F88ACAEC56 /* NidraWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				73C38AF1519C867E3C5196EF /* ListeningLiveActivity.swift */,
+				2B46666EFC08A16604F66517 /* Info.plist */,
+				CFEFFAD87D11AF2CEB5CAA94 /* Assets.xcassets */,
+			);
+			path = NidraWidgets;
+			sourceTree = "<group>";
+		};
+		1AB7A5EB5E114DE88C550AEA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F61E4FBEB4314F55E88D3573 /* Nidra.app */,
+				633F169D79F833D27E8F1906 /* NidraWidgets.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1CF5EF90B34DE98765EA898A /* Nidra */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6F5EA603D5DF50238FF9A23A /* Build configuration list for PBXNativeTarget "Nidra" */;
+			buildPhases = (
+				D7DE4E6576BE50ABBC338C4A /* Sources */,
+				D4D9190A88FB697279802338 /* Frameworks */,
+				F2E86EF31FC4EB1CEAA93B94 /* Resources */,
+				CC88047B27CE9143C36A7B5D /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D403E8E127F3FCE9251DF2A6 /* PBXTargetDependency */,
+			);
+			name = Nidra;
+			productName = Nidra;
+			productReference = F61E4FBEB4314F55E88D3573 /* Nidra.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FBFF2D9DEB17C5B0C9DBD197 /* NidraWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2CDD8E14AC7713A21FD53214 /* Build configuration list for PBXNativeTarget "NidraWidgets" */;
+			buildPhases = (
+				FF7C36025F4CD7BA2E8B4269 /* Sources */,
+				B7443AEEFFF0A2CE5C617212 /* Frameworks */,
+				0358D1B04EAFC39F2D3E0890 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NidraWidgets;
+			productName = NidraWidgets;
+			productReference = 633F169D79F833D27E8F1906 /* NidraWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DE01E1311383CF7C3AF7FDB6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2700;
+				LastUpgradeCheck = 2700;
+				TargetAttributes = {
+					1CF5EF90B34DE98765EA898A = {
+						CreatedOnToolsVersion = 27.1;
+					};
+					FBFF2D9DEB17C5B0C9DBD197 = {
+						CreatedOnToolsVersion = 27.1;
+					};
+				};
+			};
+			buildConfigurationList = 5AD4C96A3F97DFE76C85A892 /* Build configuration list for PBXProject "Nidra" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6FE2ACAF1461FE7AD8E43C26;
+			productRefGroup = 1AB7A5EB5E114DE88C550AEA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1CF5EF90B34DE98765EA898A /* Nidra */,
+				FBFF2D9DEB17C5B0C9DBD197 /* NidraWidgets */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F2E86EF31FC4EB1CEAA93B94 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1E4E27809D725DC890044D0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0358D1B04EAFC39F2D3E0890 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D5306405051D8DF59CA0596 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D7DE4E6576BE50ABBC338C4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00DB9ADE38497C433D6775DE /* PhoneStageEstimator.swift in Sources */,
+				E1F06A2F7DC57EBC53DE61C2 /* SleepAnalytics.swift in Sources */,
+				F22747AD08265A0CD2BD76CC /* SleepMetrics.swift in Sources */,
+				8C5DE46A8844F31E8851D481 /* SleepScore.swift in Sources */,
+				FD6B1830DF90D58B87C6F1C8 /* Story.swift in Sources */,
+				31AC927133836E89AAD4895E /* SleepApp.swift in Sources */,
+				4AC036698031E6F5124D523A /* DemoData.swift in Sources */,
+				C3F144C11575031093CF111D /* AlarmPlayer.swift in Sources */,
+				6F8D18030151894B939AA90E /* ClipRecorder.swift in Sources */,
+				4563F98B7E6B7410E33BD270 /* NightBuilder.swift in Sources */,
+				81F102A2C49C62B5EDCB0156 /* NightEngine.swift in Sources */,
+				5005FDE37701889C91A4DB1E /* Notifications.swift in Sources */,
+				0D3EFED3596EE37E6F728877 /* SensorHub.swift in Sources */,
+				47F602BE3E4A2E279C3DF6E2 /* HealthKitManager.swift in Sources */,
+				2D0E2C3E1A154753AC5886E2 /* Models.swift in Sources */,
+				AABCFE10C3E4D141DF81BF6A /* ListeningActivity.swift in Sources */,
+				358F869F0DFA14318F86C366 /* BedtimeView.swift in Sources */,
+				6E353BD6A529A2D6C15ADB37 /* Components.swift in Sources */,
+				B5CDBF7E069C40477DB4AA95 /* NightReportView.swift in Sources */,
+				ED508D67638E9351A733CBBC /* NightsView.swift in Sources */,
+				F0A0E7A4D4E7FF466E2C89CD /* SettingsView.swift in Sources */,
+				6960FB02202CD9BA01145AB6 /* SummaryView.swift in Sources */,
+				B90F5672BCA7FD73ECBA5D9A /* Theme.swift in Sources */,
+				F4FD3FBD75F3226B8EDE6AAF /* TrendsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF7C36025F4CD7BA2E8B4269 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AD45B8DA5B9EB164490C3D2 /* ListeningActivity.swift in Sources */,
+				EF0E35BF257E55BC4E9E356D /* ListeningLiveActivity.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D403E8E127F3FCE9251DF2A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FBFF2D9DEB17C5B0C9DBD197 /* NidraWidgets */;
+			targetProxy = 5A3EF722437A398C1DFC36F9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E6CF90468E71B18CE9684D6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CE287DDE6F5A384399BB0188 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C7B4C889AF505E4CBB9BD17F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Nidra/Nidra.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Nidra/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Halcyon;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Reads Apple Watch sleep stages, heart rate and HRV to make your sleep reports more accurate.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Saves each night's sleep stages to Apple Health, if you turn this on.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Listens on this iPhone for snoring, sleep talk and room noise while you sleep. Audio never leaves your phone.";
+				INFOPLIST_KEY_NSMotionUsageDescription = "Notices when your phone is put down or picked up, to tell when you fell asleep and woke up.";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.debayandatta.nidra";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		CB2077BC3839CF443D1BA9B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Nidra/Nidra.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Nidra/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Halcyon;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Reads Apple Watch sleep stages, heart rate and HRV to make your sleep reports more accurate.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Saves each night's sleep stages to Apple Health, if you turn this on.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Listens on this iPhone for snoring, sleep talk and room noise while you sleep. Audio never leaves your phone.";
+				INFOPLIST_KEY_NSMotionUsageDescription = "Notices when your phone is put down or picked up, to tell when you fell asleep and woke up.";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.debayandatta.nidra";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		581B4128C01240750C567BAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NidraWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Halcyon Widgets";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.debayandatta.nidra.widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG WIDGET_EXTENSION";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		7B14A157F4BFC7E678FE27A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NidraWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Halcyon Widgets";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.debayandatta.nidra.widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = WIDGET_EXTENSION;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5AD4C96A3F97DFE76C85A892 /* Build configuration list for PBXProject "Nidra" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6CF90468E71B18CE9684D6D /* Debug */,
+				CE287DDE6F5A384399BB0188 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6F5EA603D5DF50238FF9A23A /* Build configuration list for PBXNativeTarget "Nidra" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7B4C889AF505E4CBB9BD17F /* Debug */,
+				CB2077BC3839CF443D1BA9B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2CDD8E14AC7713A21FD53214 /* Build configuration list for PBXNativeTarget "NidraWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				581B4128C01240750C567BAE /* Debug */,
+				7B14A157F4BFC7E678FE27A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DE01E1311383CF7C3AF7FDB6 /* Project object */;
+}
