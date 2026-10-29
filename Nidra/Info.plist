@@ -12,7 +12,7 @@
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string>com.debayandatta.halcyon</string>
+			<string>com.debayandatta.nidra</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>halcyon</string>

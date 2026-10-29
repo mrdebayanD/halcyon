@@ -22,24 +22,35 @@
 
 Everything stays on your iPhone. There is no account, no server and no analytics. Sound is analysed on the device with Apple's built-in classifier, and the only clips saved are the short ones you see in the app. If you turn on Apple Health, nights are written to Health on your phone. Read more in [PRIVACY.md](PRIVACY.md).
 
-## Install
+## Install (free)
 
-### TestFlight (recommended, no computer needed)
+Halcyon is free and isn't on the App Store. You install it with **SideStore**, a free app that signs Halcyon with your own Apple ID.
 
-The TestFlight link is coming soon and will be posted here. When it's live:
+**You need:** an iPhone on iOS 18 or newer, a free Apple ID, and a Mac or Windows PC **once, for about 10 minutes**. A friend's computer is fine. After setup, you install, update and refresh everything on the phone.
 
-1. Install [TestFlight](https://apps.apple.com/app/testflight/id899247664) from the App Store.
-2. Open the Halcyon invite link on your iPhone and tap **Accept**, then **Install**.
-3. To send feedback, take a screenshot in Halcyon and tap **Share Beta Feedback**, or use **Settings › Send feedback** in the app.
+### One-time setup (about 10 minutes)
 
-Needs an iPhone on iOS 18 or newer.
+1. Follow the official SideStore install guide at **[docs.sidestore.io](https://docs.sidestore.io)**. It walks you through connecting your iPhone to the computer once and putting SideStore on the phone.
+2. On the iPhone, turn on **Settings › Privacy & Security › Developer Mode** and restart when asked.
+3. If iOS says the developer is untrusted, go to **Settings › General › VPN & Device Management**, tap your Apple ID and tap **Trust**.
 
-### Sideload (advanced, needs a computer once)
+You can put the computer away now.
 
-If you'd rather not wait, install [Halcyon.ipa](https://github.com/mrdebayanD/halcyon/raw/main/beta/Halcyon.ipa) with [AltStore](https://altstore.io) or [SideStore](https://sidestore.io), signed with your own free Apple ID. In AltStore or SideStore you can add this source for updates:
-`https://raw.githubusercontent.com/mrdebayanD/halcyon/main/altstore-source.json`
+### Install Halcyon (on the phone)
 
-Apps signed with a free Apple ID expire after 7 days; open AltStore or SideStore and tap **Refresh All** to renew. Your nights are kept.
+1. Open SideStore › **Sources** › **+** and paste:
+   `https://raw.githubusercontent.com/mrdebayanD/halcyon/main/altstore-source.json`
+2. Find **Halcyon** in the source and tap **Get**.
+
+New beta builds then show up in SideStore's **Updates**. Or download [Halcyon.ipa](https://github.com/mrdebayanD/halcyon/raw/main/beta/Halcyon.ipa) in Safari and install it from **My Apps › +**.
+
+### Every 7 days
+
+Apps signed with a free Apple ID expire after 7 days. SideStore refreshes Halcyon in the background. If Halcyon ever stops opening, open SideStore and tap **Refresh All**. Your nights are kept.
+
+A free Apple ID can have 3 sideloaded apps at a time, and SideStore counts as one of them.
+
+**Prefer AltStore?** It works too with the same source link, but it needs your computer on the same Wi-Fi to refresh. See [altstore.io](https://altstore.io).
 
 ### Build it yourself
 
