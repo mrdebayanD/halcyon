@@ -33,6 +33,7 @@
 		B90F5672BCA7FD73ECBA5D9A /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEF9D16D202F28A1B7E4E08 /* Theme.swift */; };
 		F4FD3FBD75F3226B8EDE6AAF /* TrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C360D95C90CC4D4D29B5DEB0 /* TrendsView.swift */; };
 		E1E4E27809D725DC890044D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA10B874C65ECDC27C95633F /* Assets.xcassets */; };
+		4C89FDAAAB3B97B3A8C97A72 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F6EA3C4826040E1B6D8E6647 /* PrivacyInfo.xcprivacy */; };
 		EF0E35BF257E55BC4E9E356D /* ListeningLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C38AF1519C867E3C5196EF /* ListeningLiveActivity.swift */; };
 		8D5306405051D8DF59CA0596 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFEFFAD87D11AF2CEB5CAA94 /* Assets.xcassets */; };
 		880306A3DD05D2FFCDD3A5C1 /* NidraWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 633F169D79F833D27E8F1906 /* NidraWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -92,6 +93,7 @@
 		AA10B874C65ECDC27C95633F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets.xcassets"; sourceTree = "<group>"; };
 		1BAA5D8007DD08F3C28BBADE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info.plist"; sourceTree = "<group>"; };
 		6288D0996AEAEA2C84917394 /* Nidra.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Nidra.entitlements"; sourceTree = "<group>"; };
+		F6EA3C4826040E1B6D8E6647 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "PrivacyInfo.xcprivacy"; sourceTree = "<group>"; };
 		73C38AF1519C867E3C5196EF /* ListeningLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListeningLiveActivity.swift"; sourceTree = "<group>"; };
 		2B46666EFC08A16604F66517 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info.plist"; sourceTree = "<group>"; };
 		CFEFFAD87D11AF2CEB5CAA94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets.xcassets"; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				AA10B874C65ECDC27C95633F /* Assets.xcassets */,
 				1BAA5D8007DD08F3C28BBADE /* Info.plist */,
 				6288D0996AEAEA2C84917394 /* Nidra.entitlements */,
+				F6EA3C4826040E1B6D8E6647 /* PrivacyInfo.xcprivacy */,
 			);
 			path = Nidra;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1E4E27809D725DC890044D0 /* Assets.xcassets in Resources */,
+				4C89FDAAAB3B97B3A8C97A72 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,11 +370,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Nidra/Nidra.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Nidra/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Halcyon;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Reads Apple Watch sleep stages, heart rate and HRV to make your sleep reports more accurate.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Saves each night's sleep stages to Apple Health, if you turn this on.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Listens on this iPhone for snoring, sleep talk and room noise while you sleep. Audio never leaves your phone.";
@@ -379,7 +385,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.debayandatta.nidra";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.debayandatta.halcyon";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -393,11 +399,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Nidra/Nidra.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Nidra/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Halcyon;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Reads Apple Watch sleep stages, heart rate and HRV to make your sleep reports more accurate.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Saves each night's sleep stages to Apple Health, if you turn this on.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Listens on this iPhone for snoring, sleep talk and room noise while you sleep. Audio never leaves your phone.";
@@ -406,7 +414,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.debayandatta.nidra";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.debayandatta.halcyon";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -417,14 +425,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NidraWidgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Halcyon Widgets";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.debayandatta.nidra.widgets";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.debayandatta.halcyon.widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG WIDGET_EXTENSION";
@@ -437,14 +445,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NidraWidgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Halcyon Widgets";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.debayandatta.nidra.widgets";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.debayandatta.halcyon.widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = WIDGET_EXTENSION;
