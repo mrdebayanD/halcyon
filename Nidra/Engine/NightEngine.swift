@@ -50,6 +50,11 @@ final class NightEngine {
         sensors.onTick = { [weak self] t in MainActor.assumeIsolated { self?.tick(t) } }
         sensors.onMinute = { [weak self] m in MainActor.assumeIsolated { self?.minute(m) } }
         sensors.onSound = { [weak self] label, time, db in MainActor.assumeIsolated { self?.sounds.append(SoundHit(label: label, time: time, db: db)) } }
+        sensors.onPause = { [weak self] time, gap in MainActor.assumeIsolated {
+            guard let self else { return }
+            self.sounds.append(SoundHit(label: .pause, time: time, db: self.liveDB, gap: gap))
+        } }
+        sensors.onAudioRestart = { [weak self] in MainActor.assumeIsolated { self?.micActive = self?.sensors.micActive ?? false } }
         sensors.onClipSaved = { [weak self] label, time, file in MainActor.assumeIsolated {
             guard let self else { return }
             if let i = self.sounds.lastIndex(where: { $0.label == label && abs($0.time.timeIntervalSince(time)) < 5 }) {

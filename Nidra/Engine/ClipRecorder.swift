@@ -14,8 +14,10 @@ final class ClipRecorder {
     private var clipsTonight = 0
 
     private let preRoll: Double = 4
+    /// Audio kept in memory so a breathing-pause clip can include the silence before it.
+    private let ringSeconds: Double = 25
     private let postRoll: Double = 5
-    private let maxClipsPerNight = 30
+    private let maxClipsPerNight = 40
     private let cooldown: TimeInterval = 120
 
     func prepare(format: AVAudioFormat) {
@@ -34,7 +36,7 @@ final class ClipRecorder {
             guard let format = self.format else { return }
             self.ring.append(copy)
             self.ringFrames += copy.frameLength
-            let keep = AVAudioFrameCount(format.sampleRate * self.preRoll)
+            let keep = AVAudioFrameCount(format.sampleRate * self.ringSeconds)
             while self.ringFrames > keep, let first = self.ring.first {
                 self.ringFrames -= first.frameLength
                 self.ring.removeFirst()
@@ -53,11 +55,12 @@ final class ClipRecorder {
         }
     }
 
-    func trigger(label: SoundLabel, done: @escaping (String) -> Void) {
+    func trigger(label: SoundLabel, preRoll seconds: Double? = nil, done: @escaping (String) -> Void) {
         q.async {
             guard self.writing == nil, let format = self.format,
                   self.clipsTonight < self.maxClipsPerNight else { return }
-            if let last = self.lastClip[label], Date().timeIntervalSince(last) < self.cooldown { return }
+            let cool = label == .pause ? 45 : self.cooldown
+            if let last = self.lastClip[label], Date().timeIntervalSince(last) < cool { return }
             let name = "\(label.rawValue)-\(UUID().uuidString).m4a"
             let url = ClipStore.folder.appendingPathComponent(name)
             let settings: [String: Any] = [AVFormatIDKey: kAudioFormatMPEG4AAC,
@@ -66,7 +69,15 @@ final class ClipRecorder {
                                            AVEncoderBitRateKey: 48_000]
             guard let file = try? AVAudioFile(forWriting: url, settings: settings,
                                               commonFormat: .pcmFormatFloat32, interleaved: false) else { return }
-            for b in self.ring { try? file.write(from: b) }
+            // Write only the last `preRoll` seconds of the ring.
+            let want = AVAudioFrameCount(format.sampleRate * (seconds ?? self.preRoll))
+            var total: AVAudioFrameCount = 0
+            var start = self.ring.count
+            while start > 0, total < want {
+                start -= 1
+                total += self.ring[start].frameLength
+            }
+            for b in self.ring[start...] { try? file.write(from: b) }
             self.writing = (file, name, AVAudioFrameCount(format.sampleRate * self.postRoll), done)
             self.lastClip[label] = Date()
             self.clipsTonight += 1

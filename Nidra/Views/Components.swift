@@ -130,7 +130,7 @@ struct StageChart: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     private var segments: [StageSegment] { StageSegment.build(from: samples) }
-    private var pins: [NightEvent] { events.filter { [.snoring, .talking, .cough, .awake].contains($0.kind) } }
+    private var pins: [NightEvent] { events.filter { [.snoring, .breathingPause, .talking, .cough, .awake].contains($0.kind) } }
 
     var body: some View {
         Chart {
@@ -210,6 +210,7 @@ struct EventRow: View {
     private var title: String {
         switch event.kind {
         case .snoring, .awake: "\(event.kind.title) · \(event.minutes) min"
+        case .breathingPause: (event.count ?? 1) == 1 ? "Possible breathing pause" : event.kind.title
         default: event.kind.title
         }
     }

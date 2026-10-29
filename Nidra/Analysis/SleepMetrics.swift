@@ -104,7 +104,7 @@ struct SleepMetrics {
         let noise = s.compactMap(\.noiseDB)
         avgNoise = noise.meanOrNil
         peakNoise = noise.max()
-        snoreMinutes = s.filter { $0.snoreSeconds >= 5 }.count
+        snoreMinutes = s.filter { $0.snoreSeconds >= 3 }.count
         coughs = s.reduce(0) { $0 + $1.coughs }
         restlessMinutes = asleep.filter { ($0.motion ?? 0) > 4 }.count
     }

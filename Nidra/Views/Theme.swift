@@ -53,7 +53,7 @@ extension ScorePart.Kind {
 extension EventKind {
     var tint: Color {
         switch self {
-        case .snoring: .snoreTint
+        case .snoring, .breathingPause: .snoreTint
         case .talking: .talkTint
         case .fellAsleep, .lightsOut: .accentSleep
         case .wokeUp: .dynamic(0xA86B00, 0xFFD60A)
@@ -68,6 +68,7 @@ extension EventKind {
         case .lightsOut: "Lights out"
         case .fellAsleep: "Fell asleep"
         case .snoring: "Snoring"
+        case .breathingPause: "Possible breathing pauses"
         case .talking: "Talking in your sleep"
         case .cough: "Cough"
         case .awake: "Awake"

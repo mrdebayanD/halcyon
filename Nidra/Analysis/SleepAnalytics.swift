@@ -29,6 +29,8 @@ enum SleepAnalytics {
         session.avgHeartRate = m.avgHR
         session.avgHRV = m.avgHRV
         session.snoreMinutes = m.snoreMinutes
+        session.breathingPauses = events.filter { $0.kind == .breathingPause }.reduce(0) { $0 + ($1.count ?? 1) }
+        session.listenedMinutes = sorted.filter { $0.noiseDB != nil }.count
         let a = analyze(session, metrics: m, context: context, need: need)
         session.latencyMinutes = a.latency
         session.score = a.score.total

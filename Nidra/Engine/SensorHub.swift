@@ -16,6 +16,7 @@ struct PhoneMinute {
     var snoreSeconds = 0.0
     var talkSeconds = 0.0
     var coughs = 0
+    var pauses = 0
     var charging = false
 
     var meanDB: Double? { dbCount > 0 ? dbSum / Double(dbCount) : nil }
@@ -36,7 +37,7 @@ struct SensorTick {
     var db: Double
 }
 
-enum SoundLabel: String { case snoring, talking, cough }
+enum SoundLabel: String { case snoring, talking, cough, pause }
 
 /// Owns the motion sensor and microphone for the night. Everything is analysed on the
 /// device; only short event clips are ever written, and only when clips are enabled.
@@ -45,6 +46,10 @@ final class SensorHub {
     var onMinute: ((PhoneMinute) -> Void)?
     var onSound: ((SoundLabel, Date, Double) -> Void)?
     var onClipSaved: ((SoundLabel, Date, String) -> Void)?
+    /// A possible breathing pause: snoring stopped for `gap` seconds, then came back loudly.
+    var onPause: ((Date, Double) -> Void)?
+    /// Called when the mic had to be restarted (call, Siri, alarm, headphones).
+    var onAudioRestart: (() -> Void)?
 
     private(set) var micActive = false
     private(set) var running = false
@@ -58,6 +63,14 @@ final class SensorHub {
     private let analysisQueue = DispatchQueue(label: "sleep.sound-analysis")
     private let motionQueue = OperationQueue()
     private var minuteTimer: DispatchSourceTimer?
+    private var wantsMic = false
+    private var lastRestart = Date.distantPast
+    private var audioObservers: [NSObjectProtocol] = []
+    // Breathing-pause detection state (work queue only).
+    private var lastSnore: Date?
+    private var boutHits = 0
+    private var gapDBSum = 0.0
+    private var gapDBCount = 0
     private var tickTimer: DispatchSourceTimer?
 
     // Owned by `work`.
@@ -88,7 +101,9 @@ final class SensorHub {
             recentFlat = []
         }
         startMotion()
+        wantsMic = useMicrophone
         if useMicrophone { startAudio() } else { startSilentKeepAlive() }
+        observeAudioSession()
         startTimers()
         running = true
     }
@@ -98,6 +113,9 @@ final class SensorHub {
         minuteTimer?.cancel(); minuteTimer = nil
         tickTimer?.cancel(); tickTimer = nil
         motion.stopDeviceMotionUpdates()
+        audioObservers.forEach { NotificationCenter.default.removeObserver($0) }
+        audioObservers = []
+        wantsMic = false
         if micActive { engine.inputNode.removeTap(onBus: 0) }
         if engine.isRunning { engine.stop() }
         analyzer?.removeAllRequests()
@@ -148,9 +166,12 @@ final class SensorHub {
             let now = Date()
             self.work.async {
                 switch label {
-                case .snoring: self.current.snoreSeconds += seconds
+                case .snoring:
+                    self.current.snoreSeconds += seconds
+                    self.checkForPause(at: now)
                 case .talking: self.current.talkSeconds += seconds
                 case .cough: self.current.coughs += 1
+                case .pause: break
                 }
                 let db = self.lastDB
                 DispatchQueue.main.async { self.onSound?(label, now, db) }
@@ -177,6 +198,8 @@ final class SensorHub {
             self.analysisQueue.async { analyzer.analyze(buffer, atAudioFramePosition: when.sampleTime) }
             self.work.async {
                 self.lastDB = db
+                self.gapDBSum += db
+                self.gapDBCount += 1
                 self.current.dbSum += db
                 self.current.dbCount += 1
                 self.current.peakDB = max(self.current.peakDB, db)
@@ -189,6 +212,67 @@ final class SensorHub {
         } catch {
             startSilentKeepAlive()
         }
+    }
+
+    /// Snoring that stops for 10–90 s and then comes back with a burst at least 6 dB louder than
+    /// the quiet in between is the pattern an obstructive apnea or hypopnea tends to leave
+    /// (silence, then a gasp or snort). Only counted inside a sustained bout of snoring.
+    private func checkForPause(at now: Date) {
+        if let last = lastSnore {
+            let gap = now.timeIntervalSince(last)
+            if gap > 90 { boutHits = 0 }
+            if gap >= 10, gap <= 90, boutHits >= 6, gapDBCount > 0 {
+                let quiet = gapDBSum / Double(gapDBCount)
+                if lastDB - quiet >= 6 {
+                    current.pauses += 1
+                    DispatchQueue.main.async { self.onPause?(now, gap) }
+                    if clipsEnabled {
+                        clips.trigger(label: .pause, preRoll: min(gap + 4, 24)) { [weak self] file in
+                            DispatchQueue.main.async { self?.onClipSaved?(.pause, now, file) }
+                        }
+                    }
+                }
+            }
+        }
+        boutHits += 1
+        lastSnore = now
+        gapDBSum = 0
+        gapDBCount = 0
+    }
+
+    // MARK: Keeping the mic alive
+
+    private func observeAudioSession() {
+        let nc = NotificationCenter.default
+        let s = AVAudioSession.sharedInstance()
+        audioObservers.append(nc.addObserver(forName: AVAudioSession.interruptionNotification, object: s, queue: .main) { [weak self] n in
+            guard let raw = n.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt,
+                  AVAudioSession.InterruptionType(rawValue: raw) == .ended else { return }
+            self?.restartAudio()
+        })
+        audioObservers.append(nc.addObserver(forName: AVAudioSession.mediaServicesWereResetNotification, object: s, queue: .main) { [weak self] _ in
+            self?.restartAudio()
+        })
+        audioObservers.append(nc.addObserver(forName: .AVAudioEngineConfigurationChange, object: engine, queue: .main) { [weak self] _ in
+            self?.restartAudio()
+        })
+    }
+
+    /// Restarts the microphone after an interruption or a route change. iOS lets an app that was
+    /// already recording in the background resume, so this works with the screen locked.
+    private func restartAudio() {
+        guard running, wantsMic, Date().timeIntervalSince(lastRestart) > 2 else { return }
+        lastRestart = Date()
+        if micActive { engine.inputNode.removeTap(onBus: 0) }
+        if engine.isRunning { engine.stop() }
+        analyzer?.removeAllRequests()
+        micActive = false
+        let session = AVAudioSession.sharedInstance()
+        try? session.setCategory(.playAndRecord, mode: .measurement,
+                                 options: [.mixWithOthers, .defaultToSpeaker, .allowBluetoothA2DP])
+        try? session.setActive(true)
+        startAudio()
+        onAudioRestart?()
     }
 
     /// Without the mic, a silent output keeps the app alive in the background.
@@ -259,7 +343,7 @@ final class SoundObserver: NSObject, SNResultsObserving {
         let d = r.timeRange.duration.seconds
         let seconds = d.isFinite && d > 0 ? d / 2 : 0.75   // 50% overlap
         func conf(_ id: String) -> Double { r.classification(forIdentifier: id)?.confidence ?? 0 }
-        if conf("snoring") > 0.5 {
+        if conf("snoring") > 0.35 {
             handler(.snoring, seconds)
         } else if max(conf("speech"), conf("whispering"), conf("laughter")) > 0.6 {
             handler(.talking, seconds)

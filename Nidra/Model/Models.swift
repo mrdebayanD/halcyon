@@ -50,6 +50,7 @@ struct MinuteSample: Codable, Hashable, Identifiable {
     var snoreSeconds: Double = 0
     var talkSeconds: Double = 0
     var coughs: Int = 0
+    var pauses: Int = 0
 
     var id: Date { time }
 }
@@ -57,7 +58,7 @@ struct MinuteSample: Codable, Hashable, Identifiable {
 // MARK: - Night events (the "What happened" timeline)
 
 enum EventKind: String, Codable {
-    case phoneDown, lightsOut, fellAsleep, snoring, talking, cough, awake, wokeUp, nightEnded
+    case phoneDown, lightsOut, fellAsleep, snoring, breathingPause, talking, cough, awake, wokeUp, nightEnded
 
     var symbol: String {
         switch self {
@@ -65,6 +66,7 @@ enum EventKind: String, Codable {
         case .lightsOut: "lightswitch.off"
         case .fellAsleep: "moon.fill"
         case .snoring: "waveform"
+        case .breathingPause: "lungs"
         case .talking: "quote.bubble.fill"
         case .cough: "lungs.fill"
         case .awake: "eye.fill"
@@ -83,6 +85,8 @@ struct NightEvent: Codable, Hashable, Identifiable {
     var clipFile: String?
     var phoneUsed = false
     var note: String?
+    /// How many times it happened, for grouped events such as breathing pauses.
+    var count: Int?
 
     var minutes: Int { end.map { max(1, Int(($0.timeIntervalSince(start) / 60).rounded())) } ?? 0 }
 }
@@ -115,6 +119,9 @@ final class SleepSession {
     var avgHeartRate: Double?
     var avgHRV: Double?
     var snoreMinutes: Int
+    var breathingPauses: Int = 0
+    /// Minutes the microphone was actually listening.
+    var listenedMinutes: Int = 0
 
     init(start: Date, end: Date, source: SessionSource) {
         self.id = UUID()

@@ -43,6 +43,8 @@ struct NightReportView: View {
 
                 stageList(a.metrics)
 
+                if session.source != .appleWatch { breathingCard(samples: samples, events: events) }
+
                 if !events.isEmpty {
                     Text("What happened").font(.title2.bold()).padding(.top, 8)
                     VStack(spacing: 0) {
@@ -106,6 +108,52 @@ struct NightReportView: View {
     }
 
     // MARK: Pieces
+
+    /// Listening coverage, snoring and possible breathing pauses.
+    @ViewBuilder
+    private func breathingCard(samples: [MinuteSample], events: [NightEvent]) -> some View {
+        let listened = samples.filter { $0.noiseDB != nil }.count
+        let inBed = max(1, samples.count)
+        let snore = samples.filter { $0.snoreSeconds >= 3 }.count
+        let pauses = events.filter { $0.kind == .breathingPause }.reduce(0) { $0 + ($1.count ?? 1) }
+        let asleepHours = max(0.5, Double(samples.filter { $0.stage != .awake }.count) / 60)
+        let perHour = Double(pauses) / asleepHours
+
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Breathing and snoring").font(.headline)
+            if listened == 0 {
+                Label {
+                    Text("Halcyon wasn't listening last night, so there's no snoring or breathing data. Start each night from the bedtime reminder or the Start button, and check that the microphone is allowed in Settings › \(AppInfo.name).")
+                } icon: {
+                    Image(systemName: "mic.slash").foregroundStyle(.orange)
+                }
+                .font(.subheadline)
+            } else {
+                HStack(alignment: .top) {
+                    stat("Listened", hm(listened), listened * 10 < inBed * 9 ? "of \(hm(inBed)) in bed" : nil)
+                    stat("Snoring", snore == 0 ? "None" : hm(snore), nil)
+                    stat("Possible pauses", "\(pauses)", pauses > 0 ? String(format: "%.1f an hour", perHour) : nil)
+                }
+                if listened * 10 < inBed * 9 {
+                    Text("The microphone was off for part of the night, for example during a call, Siri or a headphone change. Halcyon restarts it on its own now.")
+                        .font(.footnote).foregroundStyle(.secondary)
+                }
+                Text("A possible pause is snoring that stops for 10 seconds or more and then comes back with a loud breath or snort, a pattern that can come with sleep apnea. Halcyon can't diagnose apnea. If you see pauses often, especially with daytime sleepiness, morning headaches or someone noticing you stop breathing, play the clips to a doctor and ask about a home sleep test.")
+                    .font(.footnote).foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        .card()
+    }
+
+    private func stat(_ title: String, _ value: String, _ sub: String?) -> some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Text(title).font(.footnote).foregroundStyle(.secondary)
+            Text(value).font(.rounded(20))
+            if let sub { Text(sub).font(.caption).foregroundStyle(.secondary) }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
 
     private func header(_ a: NightAnalysis) -> some View {
         HStack(spacing: 14) {

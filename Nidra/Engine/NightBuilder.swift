@@ -10,6 +10,8 @@ struct SoundHit {
     var time: Date
     var db: Double
     var clip: String?
+    /// For a breathing pause: how long the quiet lasted, in seconds.
+    var gap: Double = 0
 }
 
 /// Turns a night of raw phone minutes into stages + a "What happened" timeline.
@@ -41,7 +43,7 @@ enum NightBuilder {
             MinuteSample(time: m.time, stage: st,
                          motion: m.motionSamples > 0 ? m.motionPercent : nil,
                          noiseDB: m.meanDB, snoreSeconds: m.snoreSeconds,
-                         talkSeconds: m.talkSeconds, coughs: m.coughs)
+                         talkSeconds: m.talkSeconds, coughs: m.coughs, pauses: m.pauses)
         }
 
         var events: [NightEvent] = []
@@ -83,12 +85,13 @@ enum NightBuilder {
             }
         }
 
-        // Snoring: minutes with ≥5 s of snoring, merged across gaps of up to 2 minutes.
+        // Snoring: minutes with ≥3 s of snoring, merged across gaps of up to 2 minutes,
+        // kept when the run holds at least 10 s of snoring in total.
         var runs: [(Int, Int)] = []
-        for (i, m) in minutes.enumerated() where m.snoreSeconds >= 5 {
+        for (i, m) in minutes.enumerated() where m.snoreSeconds >= 3 {
             if let last = runs.last, i - last.1 <= 3 { runs[runs.count - 1].1 = i } else { runs.append((i, i)) }
         }
-        for r in runs where r.1 - r.0 + 1 >= 2 {
+        for r in runs where minutes[r.0...r.1].map(\.snoreSeconds).reduce(0, +) >= 10 {
             let s = minutes[r.0].time, e = minutes[r.1].time.addingTimeInterval(60)
             let peak = minutes[r.0...r.1].map(\.peakDB).max() ?? 0
             let clip = sounds.first { $0.label == .snoring && $0.clip != nil && $0.time >= s.addingTimeInterval(-60) && $0.time <= e }?.clip
@@ -116,6 +119,23 @@ enum NightBuilder {
                                              note: g.count == 1 ? "Once" : "\(g.count) times"))
                 }
             }
+        }
+
+        // Possible breathing pauses, grouped when they come within 10 minutes of each other.
+        let pauses = sounds.filter { $0.label == .pause }.sorted { $0.time < $1.time }
+        var pauseGroups: [[SoundHit]] = []
+        for p in pauses {
+            if let g = pauseGroups.last, let l = g.last, p.time.timeIntervalSince(l.time) < 600 { pauseGroups[pauseGroups.count - 1].append(p) }
+            else { pauseGroups.append([p]) }
+        }
+        for g in pauseGroups {
+            guard let first = g.first, let last = g.last else { continue }
+            let longest = Int(g.map(\.gap).max() ?? 0)
+            events.append(NightEvent(kind: .breathingPause, start: first.time.addingTimeInterval(-first.gap), end: last.time,
+                                     clipFile: g.compactMap(\.clip).first,
+                                     note: g.count == 1 ? "Snoring stopped for \(longest) s, then a loud breath"
+                                                        : "\(g.count) times, longest quiet \(longest) s",
+                                     count: g.count))
         }
 
         if let off = lastSleepIndex {
