@@ -26,7 +26,7 @@
           "buildVersion": "2",
           "date": "2026-10-28",
           "localizedDescription": "First beta. Please send feedback from Settings \u203a Send feedback.",
-          "downloadURL": "https://github.com/mrdebayanD/halcyon/releases/download/v2.0-beta.1/Halcyon.ipa",
+          "downloadURL": "https://github.com/mrdebayanD/halcyon/raw/main/beta/Halcyon.ipa",
           "size": 1364874,
           "minOSVersion": "18.0"
         }
