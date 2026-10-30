@@ -129,6 +129,13 @@ struct NightReportView: View {
                 }
                 .font(.subheadline)
             } else {
+                let v = BreathingVerdict(session: session)
+                verdictRow("Snored", v.snoreText, v.snored ? .snoreTint : .secondary, "waveform")
+                verdictRow("Signs of sleep apnea", v.apneaText, v.apnea == .frequent ? .orange : .secondary, "lungs")
+                if let advice = v.apneaAdvice {
+                    Text(advice).font(.footnote.weight(.medium)).fixedSize(horizontal: false, vertical: true)
+                }
+                Divider()
                 HStack(alignment: .top) {
                     stat("Listened", hm(listened), listened * 10 < inBed * 9 ? "of \(hm(inBed)) in bed" : nil)
                     stat("Snoring", snore == 0 ? "None" : hm(snore), nil)
@@ -144,6 +151,15 @@ struct NightReportView: View {
             }
         }
         .card()
+    }
+
+    private func verdictRow(_ title: String, _ value: String, _ tint: Color, _ symbol: String) -> some View {
+        HStack {
+            Label(title, systemImage: symbol).foregroundStyle(.secondary)
+            Spacer()
+            Text(value).fontWeight(.semibold).foregroundStyle(tint == .secondary ? Color.primary : tint)
+        }
+        .font(.subheadline)
     }
 
     private func stat(_ title: String, _ value: String, _ sub: String?) -> some View {

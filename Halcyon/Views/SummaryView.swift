@@ -12,7 +12,7 @@ struct SummaryView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     header
-                    if isEvening && !engine.isArmed { bedtimeCard }
+                    if !engine.isArmed { bedtimeCard }
                     if let last = sessions.first {
                         let a = SleepAnalytics.analyze(last, context: context, need: need)
                         let recent = Array(sessions.dropFirst().prefix(14))
@@ -35,9 +35,9 @@ struct SummaryView: View {
         }
     }
 
-    private var isEvening: Bool {
+    private var isNight: Bool {
         let h = Calendar.current.component(.hour, from: .now)
-        return h >= 19 || h < 3
+        return h >= 19 || h < 6
     }
 
     private func usualSleep(_ recent: [SleepSession]) -> Int? {
@@ -65,8 +65,8 @@ struct SummaryView: View {
         HStack(spacing: 14) {
             Dusk(pose: .sleep, size: 52)
             VStack(alignment: .leading, spacing: 2) {
-                Text("Ready for bed?").font(.headline)
-                Text("Start listening. It stops on its own in the morning.")
+                Text(isNight ? "Ready for bed?" : "Taking a nap?").font(.headline)
+                Text("Start listening any time. It stops on its own when you're up.")
                     .font(.footnote).foregroundStyle(.secondary)
             }
             Spacer(minLength: 0)
@@ -131,6 +131,14 @@ struct HeroCard: View {
                 .font(.caption)
                 .foregroundStyle(.secondary)
             }
+            let v = BreathingVerdict(session: session)
+            if v.listened {
+                HStack(spacing: 8) {
+                    chip("Snored: \(v.snored ? "Yes" : "No")", v.snored ? .snoreTint : .secondary)
+                    chip("Apnea signs: \(v.apnea == .none ? "None" : v.apnea == .few ? "A few" : "Frequent")",
+                         v.apnea == .frequent ? .orange : .secondary)
+                }
+            }
             Text(Story.line(session: session, analysis: analysis, usualSleep: usual))
                 .font(.subheadline)
                 .fixedSize(horizontal: false, vertical: true)
@@ -138,6 +146,14 @@ struct HeroCard: View {
         .card(padding: 18)
         .contentShape(Rectangle())
     }
+}
+
+private func chip(_ text: String, _ tint: Color) -> some View {
+    Text(text)
+        .font(.caption.weight(.semibold))
+        .foregroundStyle(tint == .secondary ? Color.secondary : tint)
+        .padding(.horizontal, 10).padding(.vertical, 5)
+        .background((tint == .secondary ? Color.secondary : tint).opacity(0.12), in: Capsule())
 }
 
 struct HighlightCard: View {

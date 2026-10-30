@@ -10,7 +10,7 @@
   "apps": [
     {
       "name": "Halcyon",
-      "bundleIdentifier": "com.debayandatta.nidra",
+      "bundleIdentifier": "com.debayandatta.halcyon",
       "developerName": "Debayan Datta",
       "subtitle": "Sleep tracking that stays on your phone.",
       "localizedDescription": "Tap the bedtime reminder, put your phone down, and Halcyon does the rest: minute-by-minute sleep stages, a sleep score out of 100, snoring and sleep-talk clips, a smart alarm and gentle late-night nudges. No account, no server, no analytics.",

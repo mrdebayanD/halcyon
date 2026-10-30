@@ -135,3 +135,44 @@ struct StageSegment: Identifiable {
         return out
     }
 }
+
+/// Plain answers for the report: did you snore, and were there signs of sleep apnea?
+struct BreathingVerdict {
+    enum Apnea { case notChecked, none, few, frequent }
+
+    let listened: Bool
+    let snored: Bool
+    let snoreMinutes: Int
+    let pauses: Int
+    let perHour: Double
+    let apnea: Apnea
+
+    init(session: SleepSession) {
+        listened = session.listenedMinutes > 0
+        snoreMinutes = session.snoreMinutes
+        snored = listened && snoreMinutes >= 3
+        pauses = session.breathingPauses
+        perHour = Double(pauses) / max(0.5, Double(session.totalSleepMinutes) / 60)
+        // Five or more events an hour is where sleep doctors start to call it apnea.
+        apnea = !listened ? .notChecked : pauses == 0 ? .none : perHour < 5 ? .few : .frequent
+    }
+
+    var snoreText: String { !listened ? "Not checked" : snored ? "Yes · \(hm(snoreMinutes))" : "No" }
+
+    var apneaText: String {
+        switch apnea {
+        case .notChecked: "Not checked"
+        case .none: "None seen"
+        case .few: "A few · \(pauses)"
+        case .frequent: "Frequent · \(String(format: "%.0f", perHour)) an hour"
+        }
+    }
+
+    var apneaAdvice: String? {
+        switch apnea {
+        case .frequent: "Worth talking to a doctor about. Play them the clips and ask about a home sleep test."
+        case .few: "A few is common. Keep an eye on it over the next nights."
+        default: nil
+        }
+    }
+}

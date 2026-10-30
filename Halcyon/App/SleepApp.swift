@@ -1,4 +1,5 @@
 import SwiftUI
+import AppIntents
 import SwiftData
 import UserNotifications
 
@@ -92,9 +93,17 @@ struct RootView: View {
             }
         }
         .onChange(of: engine.isArmed) { _, armed in if armed { hideBedtime = false } }
-        .onChange(of: scenePhase) { _, p in engine.appIsActive = (p == .active) }
+        .onChange(of: scenePhase) { _, p in
+            engine.appIsActive = (p == .active)
+            if p == .active {
+                engine.becameActive()
+                Notifier.scheduleFollowUps()
+                MotionBackfill.run(context: context)
+            }
+        }
         .onOpenURL { url in
             if url.host == "bedtime" { hideBedtime = false }
+            if url.host == "start" { engine.requestArm() }
         }
     }
 }
@@ -132,5 +141,17 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
             default: break
             }
         }
+    }
+}
+
+/// "Hey Siri, start sleep tracking in Halcyon", plus a Shortcuts action and Action button option.
+struct HalcyonShortcuts: AppShortcutsProvider {
+    static var appShortcuts: [AppShortcut] {
+        AppShortcut(intent: StartListeningIntent(),
+                    phrases: ["Start sleep tracking in \(.applicationName)",
+                              "I'm going to bed with \(.applicationName)",
+                              "Start \(.applicationName)"],
+                    shortTitle: "Start sleep tracking",
+                    systemImageName: "moon.zzz.fill")
     }
 }

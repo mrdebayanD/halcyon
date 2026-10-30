@@ -29,6 +29,21 @@ struct GoingToSleepIntent: LiveActivityIntent {
     }
 }
 
+/// Opens Halcyon and starts listening. Used by the Control Center / Lock Screen / Action button
+/// control and by Siri. iOS only lets the microphone start with the app on screen, so it opens the app.
+struct StartListeningIntent: AppIntent {
+    static var title: LocalizedStringResource = "Start sleep tracking"
+    static var description = IntentDescription("Opens Halcyon and starts listening for sleep.")
+    static var openAppWhenRun: Bool = true
+
+    func perform() async throws -> some IntentResult {
+        #if !WIDGET_EXTENSION
+        await MainActor.run { NightEngine.shared.requestArm() }
+        #endif
+        return .result()
+    }
+}
+
 /// "I'm up" from the Lock Screen when the alarm rings or in the morning.
 struct ImUpIntent: LiveActivityIntent {
     static var title: LocalizedStringResource = "I'm up"

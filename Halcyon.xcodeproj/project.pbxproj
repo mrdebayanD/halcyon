@@ -36,7 +36,7 @@
 		4C89FDAAAB3B97B3A8C97A72 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F6EA3C4826040E1B6D8E6647 /* PrivacyInfo.xcprivacy */; };
 		EF0E35BF257E55BC4E9E356D /* ListeningLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C38AF1519C867E3C5196EF /* ListeningLiveActivity.swift */; };
 		8D5306405051D8DF59CA0596 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFEFFAD87D11AF2CEB5CAA94 /* Assets.xcassets */; };
-		880306A3DD05D2FFCDD3A5C1 /* NidraWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 633F169D79F833D27E8F1906 /* NidraWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		880306A3DD05D2FFCDD3A5C1 /* HalcyonWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 633F169D79F833D27E8F1906 /* HalcyonWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +45,7 @@
 			containerPortal = DE01E1311383CF7C3AF7FDB6 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = FBFF2D9DEB17C5B0C9DBD197;
-			remoteInfo = NidraWidgets;
+			remoteInfo = HalcyonWidgets;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -56,7 +56,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				880306A3DD05D2FFCDD3A5C1 /* NidraWidgets.appex in Embed Foundation Extensions */,
+				880306A3DD05D2FFCDD3A5C1 /* HalcyonWidgets.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,8 +64,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		F61E4FBEB4314F55E88D3573 /* Nidra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nidra.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		633F169D79F833D27E8F1906 /* NidraWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NidraWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F61E4FBEB4314F55E88D3573 /* Halcyon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Halcyon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		633F169D79F833D27E8F1906 /* HalcyonWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HalcyonWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DD8D60E29381E02CB551CE5 /* PhoneStageEstimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Analysis/PhoneStageEstimator.swift"; sourceTree = "<group>"; };
 		2F383245BFB30C0B549E61CE /* SleepAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Analysis/SleepAnalytics.swift"; sourceTree = "<group>"; };
 		8C96CB48CA681CE9D486FD30 /* SleepMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Analysis/SleepMetrics.swift"; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 		C360D95C90CC4D4D29B5DEB0 /* TrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/TrendsView.swift"; sourceTree = "<group>"; };
 		AA10B874C65ECDC27C95633F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets.xcassets"; sourceTree = "<group>"; };
 		1BAA5D8007DD08F3C28BBADE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info.plist"; sourceTree = "<group>"; };
-		6288D0996AEAEA2C84917394 /* Nidra.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Nidra.entitlements"; sourceTree = "<group>"; };
+		8D939D011B49496A30384361 /* Halcyon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Halcyon.entitlements"; sourceTree = "<group>"; };
 		F6EA3C4826040E1B6D8E6647 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "PrivacyInfo.xcprivacy"; sourceTree = "<group>"; };
 		73C38AF1519C867E3C5196EF /* ListeningLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListeningLiveActivity.swift"; sourceTree = "<group>"; };
 		2B46666EFC08A16604F66517 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info.plist"; sourceTree = "<group>"; };
@@ -120,13 +120,13 @@
 		6FE2ACAF1461FE7AD8E43C26 = {
 			isa = PBXGroup;
 			children = (
-				F8E83951EB7F03EA0D71CE8F /* Nidra */,
-				69023C4C98C3E5F88ACAEC56 /* NidraWidgets */,
+				F8E83951EB7F03EA0D71CE8F /* Halcyon */,
+				69023C4C98C3E5F88ACAEC56 /* HalcyonWidgets */,
 				1AB7A5EB5E114DE88C550AEA /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		F8E83951EB7F03EA0D71CE8F /* Nidra */ = {
+		F8E83951EB7F03EA0D71CE8F /* Halcyon */ = {
 			isa = PBXGroup;
 			children = (
 				8DD8D60E29381E02CB551CE5 /* PhoneStageEstimator.swift */,
@@ -155,27 +155,27 @@
 				C360D95C90CC4D4D29B5DEB0 /* TrendsView.swift */,
 				AA10B874C65ECDC27C95633F /* Assets.xcassets */,
 				1BAA5D8007DD08F3C28BBADE /* Info.plist */,
-				6288D0996AEAEA2C84917394 /* Nidra.entitlements */,
+				8D939D011B49496A30384361 /* Halcyon.entitlements */,
 				F6EA3C4826040E1B6D8E6647 /* PrivacyInfo.xcprivacy */,
 			);
-			path = Nidra;
+			path = Halcyon;
 			sourceTree = "<group>";
 		};
-		69023C4C98C3E5F88ACAEC56 /* NidraWidgets */ = {
+		69023C4C98C3E5F88ACAEC56 /* HalcyonWidgets */ = {
 			isa = PBXGroup;
 			children = (
 				73C38AF1519C867E3C5196EF /* ListeningLiveActivity.swift */,
 				2B46666EFC08A16604F66517 /* Info.plist */,
 				CFEFFAD87D11AF2CEB5CAA94 /* Assets.xcassets */,
 			);
-			path = NidraWidgets;
+			path = HalcyonWidgets;
 			sourceTree = "<group>";
 		};
 		1AB7A5EB5E114DE88C550AEA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F61E4FBEB4314F55E88D3573 /* Nidra.app */,
-				633F169D79F833D27E8F1906 /* NidraWidgets.appex */,
+				F61E4FBEB4314F55E88D3573 /* Halcyon.app */,
+				633F169D79F833D27E8F1906 /* HalcyonWidgets.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -183,9 +183,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1CF5EF90B34DE98765EA898A /* Nidra */ = {
+		1CF5EF90B34DE98765EA898A /* Halcyon */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6F5EA603D5DF50238FF9A23A /* Build configuration list for PBXNativeTarget "Nidra" */;
+			buildConfigurationList = 6F5EA603D5DF50238FF9A23A /* Build configuration list for PBXNativeTarget "Halcyon" */;
 			buildPhases = (
 				D7DE4E6576BE50ABBC338C4A /* Sources */,
 				D4D9190A88FB697279802338 /* Frameworks */,
@@ -197,14 +197,14 @@
 			dependencies = (
 				D403E8E127F3FCE9251DF2A6 /* PBXTargetDependency */,
 			);
-			name = Nidra;
-			productName = Nidra;
-			productReference = F61E4FBEB4314F55E88D3573 /* Nidra.app */;
+			name = Halcyon;
+			productName = Halcyon;
+			productReference = F61E4FBEB4314F55E88D3573 /* Halcyon.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FBFF2D9DEB17C5B0C9DBD197 /* NidraWidgets */ = {
+		FBFF2D9DEB17C5B0C9DBD197 /* HalcyonWidgets */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2CDD8E14AC7713A21FD53214 /* Build configuration list for PBXNativeTarget "NidraWidgets" */;
+			buildConfigurationList = 2CDD8E14AC7713A21FD53214 /* Build configuration list for PBXNativeTarget "HalcyonWidgets" */;
 			buildPhases = (
 				FF7C36025F4CD7BA2E8B4269 /* Sources */,
 				B7443AEEFFF0A2CE5C617212 /* Frameworks */,
@@ -214,9 +214,9 @@
 			);
 			dependencies = (
 			);
-			name = NidraWidgets;
-			productName = NidraWidgets;
-			productReference = 633F169D79F833D27E8F1906 /* NidraWidgets.appex */;
+			name = HalcyonWidgets;
+			productName = HalcyonWidgets;
+			productReference = 633F169D79F833D27E8F1906 /* HalcyonWidgets.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -237,7 +237,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5AD4C96A3F97DFE76C85A892 /* Build configuration list for PBXProject "Nidra" */;
+			buildConfigurationList = 5AD4C96A3F97DFE76C85A892 /* Build configuration list for PBXProject "Halcyon" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -250,8 +250,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1CF5EF90B34DE98765EA898A /* Nidra */,
-				FBFF2D9DEB17C5B0C9DBD197 /* NidraWidgets */,
+				1CF5EF90B34DE98765EA898A /* Halcyon */,
+				FBFF2D9DEB17C5B0C9DBD197 /* HalcyonWidgets */,
 			);
 		};
 /* End PBXProject section */
@@ -322,7 +322,7 @@
 /* Begin PBXTargetDependency section */
 		D403E8E127F3FCE9251DF2A6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FBFF2D9DEB17C5B0C9DBD197 /* NidraWidgets */;
+			target = FBFF2D9DEB17C5B0C9DBD197 /* HalcyonWidgets */;
 			targetProxy = 5A3EF722437A398C1DFC36F9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -368,12 +368,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Nidra/Nidra.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Halcyon/Halcyon.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Nidra/Info.plist;
+				INFOPLIST_FILE = Halcyon/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Halcyon;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
@@ -385,7 +385,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.debayandatta.nidra";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.debayandatta.halcyon";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -397,12 +397,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Nidra/Nidra.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Halcyon/Halcyon.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Nidra/Info.plist;
+				INFOPLIST_FILE = Halcyon/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Halcyon;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
@@ -414,7 +414,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.debayandatta.nidra";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.debayandatta.halcyon";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -428,11 +428,11 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NidraWidgets/Info.plist;
+				INFOPLIST_FILE = HalcyonWidgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Halcyon Widgets";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.debayandatta.nidra.widgets";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.debayandatta.halcyon.widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG WIDGET_EXTENSION";
@@ -448,11 +448,11 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NidraWidgets/Info.plist;
+				INFOPLIST_FILE = HalcyonWidgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Halcyon Widgets";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.debayandatta.nidra.widgets";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.debayandatta.halcyon.widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = WIDGET_EXTENSION;
@@ -464,7 +464,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5AD4C96A3F97DFE76C85A892 /* Build configuration list for PBXProject "Nidra" */ = {
+		5AD4C96A3F97DFE76C85A892 /* Build configuration list for PBXProject "Halcyon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E6CF90468E71B18CE9684D6D /* Debug */,
@@ -473,7 +473,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6F5EA603D5DF50238FF9A23A /* Build configuration list for PBXNativeTarget "Nidra" */ = {
+		6F5EA603D5DF50238FF9A23A /* Build configuration list for PBXNativeTarget "Halcyon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C7B4C889AF505E4CBB9BD17F /* Debug */,
@@ -482,7 +482,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2CDD8E14AC7713A21FD53214 /* Build configuration list for PBXNativeTarget "NidraWidgets" */ = {
+		2CDD8E14AC7713A21FD53214 /* Build configuration list for PBXNativeTarget "HalcyonWidgets" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				581B4128C01240750C567BAE /* Debug */,

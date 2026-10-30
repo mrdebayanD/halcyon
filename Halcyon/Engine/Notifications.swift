@@ -58,6 +58,50 @@ enum Notifier {
                                          trigger: UNCalendarNotificationTrigger(dateMatching: comps, repeats: true)))
     }
 
+    /// "Still up?" reminders 1 to 4 hours after bedtime, for the next week, so a late night still
+    /// gets a one-tap start. Tonight's are removed as soon as listening starts.
+    static func scheduleFollowUps() {
+        let d = UserDefaults.standard
+        let center = UNUserNotificationCenter.current()
+        let enabled = (d.object(forKey: "bedtimeReminder") as? Bool ?? true) && (d.object(forKey: "followUps") as? Bool ?? true)
+        let bedtime = d.object(forKey: "bedtimeSeconds") as? Double ?? 22.75 * 3600
+        let armedAt = d.object(forKey: "lastArmedAt") as? Date ?? .distantPast
+        center.getPendingNotificationRequests { pending in
+            let old = pending.map(\.identifier).filter { $0.hasPrefix(followUpPrefix) }
+            center.removePendingNotificationRequests(withIdentifiers: old)
+            guard enabled else { return }
+            let cal = Calendar.current
+            let today = cal.startOfDay(for: .now)
+            let lines = [("Still up?", "Tap when you head to bed and \(AppInfo.name) will start listening."),
+                         ("Late one tonight?", "Tap to start sleep tracking. One tap, then put the phone down."),
+                         ("Going to sleep soon?", "Tap to let \(AppInfo.name) listen. It stops on its own when you're up.")]
+            for day in 0..<7 {
+                let night = today.addingTimeInterval(Double(day) * 86_400 + bedtime)
+                for k in 1...4 {
+                    let at = night.addingTimeInterval(Double(k) * 3600)
+                    // Skip the past, and tonight if listening already started this evening.
+                    if at <= Date() || (armedAt > night.addingTimeInterval(-3 * 3600) && armedAt < at) { continue }
+                    let c = UNMutableNotificationContent()
+                    c.title = lines[(k - 1) % lines.count].0
+                    c.body = lines[(k - 1) % lines.count].1
+                    c.sound = .default
+                    c.categoryIdentifier = Category.bedtime
+                    let comps = cal.dateComponents([.year, .month, .day, .hour, .minute], from: at)
+                    center.add(UNNotificationRequest(identifier: "\(followUpPrefix)\(Int(at.timeIntervalSince1970))", content: c,
+                                                     trigger: UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)))
+                }
+            }
+        }
+    }
+
+    static let followUpPrefix = "sleep.followup."
+
+    /// Removes tonight's remaining "Still up?" reminders once listening has started.
+    static func cancelTonightsFollowUps() {
+        UserDefaults.standard.set(Date(), forKey: "lastArmedAt")
+        scheduleFollowUps()
+    }
+
     private static let nudgeLines: [(String, String)] = [
         ("Weren't you going to sleep?", "You said goodnight %d minutes ago. Everything on here will still be here tomorrow. Tonight's sleep won't wait."),
         ("Psst. It's %@.", "The internet is open 24/7. Your best sleep isn't. Put it down, you'll thank yourself at breakfast."),

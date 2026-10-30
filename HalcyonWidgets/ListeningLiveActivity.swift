@@ -7,6 +7,20 @@ import WidgetKit
 struct SleepWidgetsBundle: WidgetBundle {
     var body: some Widget {
         ListeningLiveActivity()
+        StartListeningControl()
+    }
+}
+
+/// A button for Control Center, the Lock Screen and the Action button.
+struct StartListeningControl: ControlWidget {
+    var body: some ControlWidgetConfiguration {
+        StaticControlConfiguration(kind: "com.debayandatta.halcyon.start") {
+            ControlWidgetButton(action: StartListeningIntent()) {
+                Label("Start sleep", systemImage: "moon.zzz.fill")
+            }
+        }
+        .displayName("Start sleep tracking")
+        .description("Opens Halcyon and starts listening for sleep.")
     }
 }
 

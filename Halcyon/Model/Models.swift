@@ -22,7 +22,7 @@ enum SleepStage: Int, Codable, CaseIterable, Identifiable {
 }
 
 enum SessionSource: String, Codable {
-    case iPhone, appleWatch, combined, demo
+    case iPhone, appleWatch, combined, demo, movement
 
     var label: String {
         switch self {
@@ -30,6 +30,7 @@ enum SessionSource: String, Codable {
         case .appleWatch: "Apple Watch"
         case .combined: "Apple Watch + iPhone"
         case .demo: "Sample night"
+        case .movement: "iPhone movement only"
         }
     }
 }

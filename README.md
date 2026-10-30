@@ -54,7 +54,7 @@ A free Apple ID can have 3 sideloaded apps at a time, and SideStore counts as on
 
 ### Build it yourself
 
-Open `Nidra.xcodeproj` in a recent Xcode (built with Xcode 27), choose your team under **Signing & Capabilities** for both targets (Nidra and NidraWidgets), pick your iPhone and press Run. (The project folders still use the app's old working name, Nidra.)
+Open `Halcyon.xcodeproj` in a recent Xcode (built with Xcode 27), choose your team under **Signing & Capabilities** for both targets (Halcyon and HalcyonWidgets), pick your iPhone and press Run.
 
 ## Using it
 

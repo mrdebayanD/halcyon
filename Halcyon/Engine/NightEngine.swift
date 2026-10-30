@@ -79,6 +79,20 @@ final class NightEngine {
 
     // MARK: Arming (needs the app on screen)
 
+    /// Set when something asked to start before the app was fully on screen.
+    @ObservationIgnored private var pendingArm = false
+
+    /// Starts listening now if the app is on screen, otherwise as soon as it is.
+    func requestArm() {
+        if UIApplication.shared.applicationState == .active { Task { await arm() } }
+        else { pendingArm = true }
+    }
+
+    /// Called when the app comes on screen.
+    func becameActive() {
+        if pendingArm { pendingArm = false; Task { await arm() } }
+    }
+
     func arm() async {
         guard phase == .idle else { return }
         let mic = await AVAudioApplication.requestRecordPermission()
@@ -91,6 +105,7 @@ final class NightEngine {
             return
         }
         micActive = sensors.micActive
+        Notifier.cancelTonightsFollowUps()
         resetNight()
         armedAt = Date()
         phase = .waiting

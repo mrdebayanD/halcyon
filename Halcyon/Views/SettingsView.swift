@@ -9,6 +9,7 @@ struct SettingsView: View {
     @AppStorage("sleepNeed") private var need = 480
     @AppStorage("bedtimeReminder") private var bedtimeOn = true
     @AppStorage("bedtimeSeconds") private var bedtimeSeconds: Double = 22.75 * 3600
+    @AppStorage("followUps") private var followUps = true
     @AppStorage("listeningNotice") private var noticeOn = true
     @AppStorage("nudges") private var nudgesOn = true
     @AppStorage("stayArmed") private var stayArmed = false
@@ -50,6 +51,7 @@ struct SettingsView: View {
                     Toggle("Bedtime reminder", isOn: $bedtimeOn)
                     if bedtimeOn {
                         DatePicker("Remind me at", selection: timeBinding($bedtimeSeconds), displayedComponents: .hourAndMinute)
+                        Toggle("Remind again if I'm still up", isOn: $followUps)
                     }
                     Toggle("Listening notice on Lock Screen", isOn: $noticeOn)
                     Toggle("Late-night nudges", isOn: $nudgesOn)
@@ -57,7 +59,7 @@ struct SettingsView: View {
                 } header: {
                     Text("Bedtime and listening")
                 } footer: {
-                    Text("Tap the reminder to start listening; iOS only lets an open app turn the microphone on. Stay armed keeps the mic on so you never need to tap, but shows the orange dot all day and uses more battery.")
+                    Text("Tap a reminder, the Start button, or add Start sleep tracking to Control Center or the Action button. iOS only lets an open app turn the microphone on, so one tap is always needed. Still up? reminders come 1 to 4 hours after bedtime. Stay armed keeps the mic on so you never need to tap, but shows the orange dot all day and uses more battery.")
                 }
 
                 Section("Smart alarm") {
@@ -139,6 +141,7 @@ struct SettingsView: View {
             .navigationTitle("Settings")
             .onChange(of: bedtimeOn) { _, _ in reschedule() }
             .onChange(of: bedtimeSeconds) { _, _ in reschedule() }
+            .onChange(of: followUps) { _, _ in reschedule() }
             .confirmationDialog("Delete every night and clip?", isPresented: $confirmDelete, titleVisibility: .visible) {
                 Button("Delete all", role: .destructive) {
                     try? context.delete(model: SleepSession.self)
@@ -150,5 +153,8 @@ struct SettingsView: View {
         }
     }
 
-    private func reschedule() { Notifier.scheduleBedtime(enabled: bedtimeOn, secondsAfterMidnight: bedtimeSeconds) }
+    private func reschedule() {
+        Notifier.scheduleBedtime(enabled: bedtimeOn, secondsAfterMidnight: bedtimeSeconds)
+        Notifier.scheduleFollowUps()
+    }
 }
